@@ -3,7 +3,7 @@ import openai
 
 # represent traits of the art as genes
 # change the genes into a prompt
-# send the propmpt to DALLE to render
+# send the prompt to DALLE to render
 # do this for every member of the population
 
 # openai.api_key = os.getenv("OPENAI_API_KEY")
