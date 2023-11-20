@@ -1,9 +1,15 @@
 import os
 import openai
 
+# represent traits of the art as genes
+# change the genes into a prompt
+# send the propmpt to DALLE to render
+# do this for every member of the population
+
 # openai.api_key = os.getenv("OPENAI_API_KEY")
 openai.api_key = '<redacted>'
 
+# create a dictionary structure with all the members of the population
 
 genes = [
     {"ID": 1, "Votes": None, "Style": "Op Art", "Theme": "Underwater Realm", "Setting": "Desolate Wasteland", "ArtType": "Abstract", "HexColorCode": "#800080", "CreativeMedium": None, "Perspective": "Three-Point Perspective"},
@@ -11,8 +17,11 @@ genes = [
     {"ID": 3, "Votes": None, "Style": "Fauvism", "Theme": "Historical Intrigue", "Setting": None, "ArtType": "Figurative", "HexColorCode": "#000000", "CreativeMedium": "Collage Art", "Perspective": "Linear Perspective"},
 ]
 
+# create a dictionary for the prompts
+
 prompts = []
 
+# convert the genes into a prompt for each member of the population
 
 for row in genes:
 
@@ -23,10 +32,10 @@ for row in genes:
   prompts.append(prompt)
 # end of loop
 
-# row = next(item for item in genes if item["ID"] == 10)
 
-# PROMPT = f"Create an image of {row['ArtType']} art, using the values from row id=10 as variables in the prompt. Create it in the {row['Style']} style, using the medium of {row['CreativeMedium']}, centered around a theme of {row['Theme']}. The background color should be {row['HexColorCode']}. Create the image from the perspective of {row['Perspective']}. If relevant for the artType, set the setting as {row['Setting']}."
-
+# go through each member of the population and send the prompt to DALLE
+# print the prompt
+# print the URL of the resulting render
 
 for index, row in enumerate(genes):
     PROMPT = prompts[index]
